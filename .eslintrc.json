@@ -1,0 +1,17 @@
+{
+   "extends": [
+      "plugin:adonis/typescriptApp"
+   ],
+   "rules": {
+      "@typescript-eslint/quotes": [
+         "off"
+      ],
+      "@typescript-eslint/indent": [
+         "error",
+         3
+      ],
+      "@typescript-eslint/space-before-function-paren": [
+         "off"
+      ]
+   }
+}
