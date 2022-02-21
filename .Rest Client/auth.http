@@ -1,0 +1,18 @@
+###
+
+POST http://localhost:3333/api/login HTTP/1.1
+Content-Type: Application/json
+
+{
+   "email": "",
+   "password": ""
+}
+
+###
+POST http://localhost:3333/api/register HTTP/1.1
+Content-Type: Application/json
+
+{
+   "email": "",
+   "password": ""
+}
