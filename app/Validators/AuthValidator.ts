@@ -2,7 +2,20 @@ import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import BaseValidator from './BaseValidator'
 
-export default class AuthValidator extends BaseValidator {
+export class LoginValidator extends BaseValidator {
+   constructor(protected ctx: HttpContextContract) {
+      super()
+   }
+
+   public schema = schema.create({
+      identifier: schema.string(),
+      password: schema.string(),
+   })
+
+   // public messages = {}
+}
+
+export class RegisterValidator extends BaseValidator {
    constructor(protected ctx: HttpContextContract) {
       super()
    }

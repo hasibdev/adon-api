@@ -1,13 +1,17 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
-import AuthValidator from 'App/Validators/AuthValidator'
+import { RegisterValidator, LoginValidator } from 'App/Validators/AuthValidator'
 
 export default class AuthController {
-   public login({ }: HttpContextContract) {
-      return 'login'
+   public async login({ request, auth }: HttpContextContract) {
+      const { identifier, password } = await request.validate(LoginValidator)
+      const result = await auth.use('api').attempt(identifier, password, {
+         expiresIn: '7days',
+      })
+      return result
    }
    public async register({ request }: HttpContextContract) {
-      const validated = await request.validate(AuthValidator)
+      const validated = await request.validate(RegisterValidator)
 
       return await User.create(validated)
    }
