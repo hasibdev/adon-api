@@ -6,9 +6,10 @@ export default class UsersSchema extends BaseSchema {
    public async up() {
       this.schema.createTable(this.tableName, (table) => {
          table.increments('id').primary()
-         table.string('firstName', 50).notNullable()
-         table.string('lastName', 50).notNullable()
-         table.string('email', 255).notNullable().unique()
+         table.string('first_name', 50).notNullable()
+         table.string('last_name', 50).notNullable()
+         table.string('email', 100).notNullable().unique()
+         table.string('phone', 30).notNullable().unique()
 
          table.boolean('blocked').defaultTo(false)
          table.string('password', 180).notNullable()
