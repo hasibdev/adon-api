@@ -3,6 +3,10 @@
       "plugin:adonis/typescriptApp"
    ],
    "rules": {
+      "max-len": [
+         "error",
+         160
+      ],
       "@typescript-eslint/quotes": [
          "off"
       ],
