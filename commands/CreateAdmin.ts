@@ -42,9 +42,12 @@ export default class CreateAdmin extends BaseCommand {
 
       // Eamil
       const email = await this.prompt.ask('Enter email', {
-         validate(answer) {
+         async validate(answer) {
             if (!validateEmail(answer)) {
                return "Email is not valid"
+            }
+            if (await Admin.findByOrFail('email', answer)) {
+               return "Email already exits!"
             }
             return true
          },

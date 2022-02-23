@@ -1,17 +1,13 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import { AdminLoginValidator } from 'App/Validators/AuthValidator'
 
 export default class AdminsController {
-  public async index({}: HttpContextContract) {}
+   public async login({ request, auth }: HttpContextContract) {
+      const { email, password } = await request.validate(AdminLoginValidator)
+      const result = await auth.use('admin').attempt(email, password, {
+         expiresIn: '2days',
+      })
 
-  public async create({}: HttpContextContract) {}
-
-  public async store({}: HttpContextContract) {}
-
-  public async show({}: HttpContextContract) {}
-
-  public async edit({}: HttpContextContract) {}
-
-  public async update({}: HttpContextContract) {}
-
-  public async destroy({}: HttpContextContract) {}
+      return result
+   }
 }

@@ -1,5 +1,12 @@
-###
+### Admin Login
+POST http://localhost:3333/api/admin/login HTTP/1.1
+Content-Type: Application/json
 
+{
+   "email": "admin@admin.com",
+   "password": "123456"
+}
+### User Login
 POST http://localhost:3333/api/login HTTP/1.1
 Content-Type: Application/json
 
@@ -8,7 +15,7 @@ Content-Type: Application/json
    "password": "123456"
 }
 
-###
+### User Register
 POST http://localhost:3333/api/register HTTP/1.1
 Content-Type: Application/json
 
