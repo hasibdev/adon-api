@@ -17,7 +17,7 @@ import { AuthConfig } from '@ioc:Adonis/Addons/Auth'
 |
 */
 const authConfig: AuthConfig = {
-   guard: 'api',
+   guard: 'user',
    guards: {
       /*
       |--------------------------------------------------------------------------
@@ -32,7 +32,7 @@ const authConfig: AuthConfig = {
       | on cookies/sessions.
       |
       */
-      api: {
+      user: {
          driver: 'oat',
 
          /*
