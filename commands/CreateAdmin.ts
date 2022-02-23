@@ -30,6 +30,7 @@ export default class CreateAdmin extends BaseCommand {
    }
 
    public async run() {
+      // Full name
       const name = await this.prompt.ask('Enter full name', {
          validate(answer) {
             if (answer.length < 2) {
@@ -38,6 +39,8 @@ export default class CreateAdmin extends BaseCommand {
             return true
          },
       })
+
+      // Eamil
       const email = await this.prompt.ask('Enter email', {
          validate(answer) {
             if (!validateEmail(answer)) {
@@ -46,6 +49,8 @@ export default class CreateAdmin extends BaseCommand {
             return true
          },
       })
+
+      // Password
       const password = await this.prompt.secure('Choose account password', {
          validate(answer) {
             if (answer.length < 6) {
@@ -54,7 +59,9 @@ export default class CreateAdmin extends BaseCommand {
             return true
          },
       })
-      const confirmed = await this.prompt.secure('Confirmed password', {
+
+      // Confirmed Password
+      await this.prompt.secure('Confirmed password', {
          validate(answer) {
             if (answer !== password) {
                return "Password dosen't match"
