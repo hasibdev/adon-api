@@ -76,8 +76,10 @@ export default class CreateAdmin extends BaseCommand {
       try {
          await Admin.create({ name, email, password })
          this.logger.success('Admin Created Successfully')
+         process.exit()
       } catch (error) {
          this.logger.error(new Error('Request Fail'))
+         process.exit()
       }
    }
 }
