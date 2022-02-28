@@ -46,7 +46,7 @@ export default class CreateAdmin extends BaseCommand {
             if (!validateEmail(answer)) {
                return "Email is not valid"
             }
-            if (await Admin.findByOrFail('email', answer)) {
+            if (await Admin.findBy('email', answer)) {
                return "Email already exits!"
             }
             return true
